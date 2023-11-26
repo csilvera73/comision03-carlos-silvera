@@ -6,4 +6,13 @@ export const settingDotEnvPort = () => {
     return {port:process.env.PORT }  // || 5000 puerto opcional is .env vacio 
 } 
 
+export const settingDotEnvDB = () => {
+    return { db:{
+        localhost: process.env.DB_LOCALHOST,
+        host: process.env.DB_MONGO_ATLAS
+    }
+
+    }
+} 
+
 
