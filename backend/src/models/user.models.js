@@ -19,7 +19,7 @@ import {Schema, model } from "mongoose"
     },
     avatarurl:{
         type: String,
-        default: "../public/avatar.jpg",
+        default: "https://cdn0.iconfinder.com/data/icons/cryptocurrency-137/128/1_profile_user_avatar_account_person-132-64.png",
      },
      },
      {

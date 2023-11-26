@@ -4,6 +4,8 @@ import express from "express"
 import morgan from "morgan"
 // importamos cors
 import cors from "cors"
+// importamos la dependencia cookie-parser
+import cookieParser from "cookie-parser"
 // importamos para la conección a la BD
 import {connectMongo} from "./database/db.js"
 // importamos las rutas
@@ -15,6 +17,7 @@ export const app = express()
 connectMongo()
 
 app.use(morgan("dev"))  //tiny, dev, combined, short, common, etc
+app.use(cookieParser())
 app.use(express.json())
 app.use(cors())
 

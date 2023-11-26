@@ -15,4 +15,6 @@ export const settingDotEnvDB = () => {
     }
 } 
 
-
+export const settingDotEnvSecret = () => {
+    return {secret:process.env.SECRET_KEY} 
+} 
