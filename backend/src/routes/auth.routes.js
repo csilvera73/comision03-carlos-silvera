@@ -15,6 +15,9 @@ routes.post("/register", register)
 // Rutas Login de Usuario
 routes.post("/login",login )
 
+//Rutas para el Logout
+routes.post("/logout", logout)
+
 // Ruta para el perfil del usuario
 routes.get("/profile", authRequired, profile)
 
