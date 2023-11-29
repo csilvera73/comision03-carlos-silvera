@@ -4,7 +4,7 @@ export const getAllPost = async (req, res) => {
     try {
         const allpost = await Post.find({
             user:req.user.id
-        }).populate("user")  // Muetra toda los datos en el thunder client
+        }).populate("user")  // Muestra toda los datos en el thunder client
         res.status(200).json(allpost)
     } catch (error) {
         return res.status(400).json({message: "Error al buscar todos los Post" })
@@ -35,6 +35,14 @@ export const createPost = async (req, res) => {
         })
 
         const postSaved = await newPost.save()
+
+        //FALTA COMO SE CREA ARRAY DE COMENTARIO!
+
+        // Agregar el ID del nuevo post al array 'posts' del usuario
+        /* user.post.push(newPost:_id)
+        await user.save() */
+
+
         res.status(200).json(postSaved)
     } catch (error) {
         return res.status(400).json({message: "Error al crear el Post" })
