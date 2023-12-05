@@ -24,13 +24,14 @@ export const getPostById = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const {title,description} = req.body
+    const {title,description, Comments, imageURL} = req.body
     try {
         const newPost = new Post ({
             title,
             description,
             user: req.user.id, // Usuario del Post
-            Comments: req.user.id, // Comentario del  Usuario del Post NO FUNCIONA! empty
+            comments,
+            imageURL
 
         })
 
