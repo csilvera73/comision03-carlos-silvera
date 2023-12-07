@@ -2,6 +2,7 @@
 import {createContext, useContext, useState} from "react"
 import {registerReq} from "../api/auth"
 
+// Creación del Contexto
 export const AuthContext = createContext()
 
 //hooks personalizado
@@ -27,9 +28,7 @@ export const AuthProvider = ({children}) => {
             console.log(error.response.data);
             
         }
-
     }
-    
 
     return(
         <AuthContext.Provider value={{
