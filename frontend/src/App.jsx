@@ -1,20 +1,30 @@
 // Toda la lógica en el App
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import { Register } from "./pages/Register"
+import { AuthProvider } from "./context/Auth.Context"
+import { HomePage } from "./pages/HomePage"
+import { Register } from "./pages/RegisterPage"
+import { Login } from "./pages/LoginPage"
+import { PostPage } from "./pages/PostPage"
+import { ProfilePage } from "./pages/ProfilePage"
+import { PrivateRoutes } from "./routes/PrivateRoutes"
 
 export const App = () => {
   return (
-    /* Padre */
-    <Router>
-      <Routes>
-        <Route path="/" element = {<h1>Home</h1>} />
-        <Route path="/login" element = {<h1>Login</h1>} />
-        <Route path="/register" element = {<Register/>} />
-        <Route path="/profile" element = {<h1>Profile</h1>} />
-
-      </Routes>
-      
-    </Router>
+    
+      /* Padre */
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element = {<HomePage/>} />
+          <Route path="/login" element = {<Login/>} />
+          <Route path="/register" element = {<Register/>} />
+        <Route element={<PrivateRoutes/>}>
+          <Route path="/post" element = {<PostPage />} />
+          <Route path="/profile" element = {<ProfilePage />} />
+        </Route>  
+        </Routes>      
+      </Router>
+    </AuthProvider>
 
   )
 }
