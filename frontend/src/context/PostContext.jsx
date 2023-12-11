@@ -1,4 +1,11 @@
 import {createContext, useState} from "react"
+import {
+    getPostReq, 
+    getPostByIdReq, 
+    createPostReq, 
+    updatePostReq,
+    deletePostReq, 
+} from "../api/postAxios"
 
 const PostContext = createContext()
 
@@ -9,7 +16,8 @@ export const PostProvider = ({children}) => {
     // 1) create Post
 
     const createPost = async (post) => {
-        console.log(post);
+        /* console.log(post); */
+        const res = await createPostReq (post)
     }
 
     return (
