@@ -1,6 +1,7 @@
 // Permite lo que genere el padre, pueda ser usado por hijos, nietos, etc.
 import {createContext, useContext, useEffect, useState} from "react"
-import {registerReq, loginReq} from "../api/auth"
+import {registerReq, loginReq, verifyToken} from "../api/auth"
+import Cookies from "js-cookie"
 
 // Creación del Contexto
 export const AuthContext = createContext()
@@ -52,6 +53,13 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    // Fin de sesión del usuario
+    const signout = () => {
+        Cookies.remove("token")
+        setIsAuth(false)
+        setUser(null)
+    }
+
 // Manejo de mensajes de errores para que desaparezcan
 
     useEffect(() => {
@@ -63,10 +71,37 @@ export const AuthProvider = ({children}) => {
         }
     }, [errors])
 
+    // Manejo de Cookies (almacenamiento)
+
+    useEffect(()=>{   
+        async function verifyLogin() {
+            const cookie = Cookies.get()
+        /* console.log(cookie);    */ 
+        if(cookie.token){
+            try {
+                const res = await verifyToken(cookie.token)
+                /* console.log(res); */
+                if(res.data){
+                    setIsAuth(true)
+                    setUser(res.data)
+                } else {
+                    setIsAuth(false)
+                    setUser(null)
+                }
+            } catch (error) {
+                console.log(error);       
+            }
+        }
+        }
+        verifyLogin()
+
+    }, [])
+
     return(
         <AuthContext.Provider value={{
             signup,
             signin,
+            signout,
             isAuth,
             user,
             errors,

@@ -7,6 +7,7 @@ import { Login } from "./pages/LoginPage"
 import { PostPage } from "./pages/PostPage"
 import { ProfilePage } from "./pages/ProfilePage"
 import { PrivateRoutes } from "./routes/PrivateRoutes"
+import { PostFormPage } from "./pages/PostFormPage"
 
 export const App = () => {
   return (
@@ -20,6 +21,8 @@ export const App = () => {
           <Route path="/register" element = {<Register/>} />
         <Route element={<PrivateRoutes/>}>
           <Route path="/post" element = {<PostPage />} />
+          <Route path="/add-post" element = {<PostFormPage />} />
+          <Route path="/post/:id" element = {<PostFormPage />} />
           <Route path="/profile" element = {<ProfilePage />} />
         </Route>  
         </Routes>      
