@@ -1,4 +1,4 @@
-import {createContext, useState} from "react"
+import {createContext, useContext, useState} from "react"
 import {
     getPostReq, 
     getPostByIdReq, 
@@ -8,6 +8,12 @@ import {
 } from "../api/postAxios"
 
 const PostContext = createContext()
+
+export const usePost = () => {
+    const context = useContext(PostContext);
+    if (!context) throw new Error("Error en el contexto de los Posts")
+    return context
+  };
 
 export const PostProvider = ({children}) => {
     
