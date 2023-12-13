@@ -10,7 +10,7 @@ export const Login = () => {
 
     const {register, handleSubmit, formState:{errors}} = useForm()
 
-    const { signin, isAuth, errors:loginErrors } = useAuth ()
+    const { signin, isAuth, errors:loginErrors } = useAuth () // renombro el error
     
     // Redirrecionamiento al Home con  efecto
 
@@ -35,9 +35,11 @@ export const Login = () => {
             <div className="bg-zinc-900 max-w-md p-8 rounded-md">
 
             <form action="">
-                <h1 className="text-3xl text-center font-semibold mb-5">Credenciales</h1>
+                <h1 className="text-3xl text-center font-semibold mb-5">Login</h1>
                 {loginErrors.map((err, i) => (
-                <div className="bg-red-800 text-white" key={i}>{err}</div>
+                    <div className="bg-red-800 text-white" key={i}>
+                        {err}
+                    </div>
                 ))}
                 <input className = "w-full bg-zinc-700 text-white px4 py-2 rounded-md my-2" 
                 type="email" placeholder="Email" {...register("email",{required: true})} />

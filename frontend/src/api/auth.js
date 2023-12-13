@@ -1,7 +1,7 @@
 // Usar Axios para solicitudes al servidor (no fetch)
 
 /* import axios from "axios" */
-import axios from "../api/setCredentials"  // instance
+import axios from "./setCredentials"  // instance
 
 //desestructuro
 /* const API = "http://localhost:3000" */

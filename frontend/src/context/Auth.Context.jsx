@@ -1,5 +1,7 @@
+import {useForm} from "react-hook-form"
 // Permite lo que genere el padre, pueda ser usado por hijos, nietos, etc.
 import {createContext, useContext, useEffect, useState} from "react"
+// Las instancioas de axios
 import {registerReq, loginReq, verifyToken} from "../api/auth"
 import Cookies from "js-cookie"
 
@@ -29,12 +31,12 @@ export const AuthProvider = ({children}) => {
     const signup = async(user) => {
         try {
             const res = await registerReq(user)
-            console.log(res.data)
+            /* console.log(res.data) */
             setUser (res.data)
             setIsAuth(true)
 
         } catch (error) {
-            console.log(error.response.data)
+            /* console.log(error.response.data) */
             setErrors(error.response.data)
             
         }
@@ -86,10 +88,12 @@ export const AuthProvider = ({children}) => {
                     setUser(res.data)
                 } else {
                     setIsAuth(false)
-                    setUser(null)
+                    /* setUser(null) */
                 }
             } catch (error) {
-                console.log(error);       
+                /* console.log(error);  */      
+                setIsAuth(false)
+                setUser(null)
             }
         }
         }
@@ -102,8 +106,8 @@ export const AuthProvider = ({children}) => {
             signup,
             signin,
             signout,
-            isAuth,
             user,
+            isAuth,
             errors,
         }}>
             {children}
