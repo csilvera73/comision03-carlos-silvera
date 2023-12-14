@@ -46,6 +46,8 @@ export const Register = () => {
                 <input className = "w-full bg-zinc-700 text-white px4 py-2 rounded-md my-2" 
                 type="password" placeholder="Password" {...register("password",{required: true})} />
                 {errors.password && (<p className="text-red-400">Password es obligatorio</p>)}
+                <input className = "w-full bg-zinc-700 text-white px4 py-2 rounded-md my-2" 
+                type="Avatar" placeholder="Avatar Image URL" {...register("avatar",{required: false})} />
                 <button onClick={onSubmit} className="h-10 px-6 font-semibold rounded-md bg-blue-500 text-white my-3">Registrarse</button>
             </form>
             <p className="flex justify-between mt-10">

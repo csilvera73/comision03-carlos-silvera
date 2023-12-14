@@ -26,10 +26,57 @@ export const PostProvider = ({children}) => {
         const res = await createPostReq (post)
     }
 
+    //2) Buscar
+  const getAllPost = async () => {
+    const res = await getPostReq()
+    // console.log(res)
+    try {
+      setPost(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  //3) Eliminar
+  const deletePost = async (id) => {
+    try {
+      const res = await deletePostReq(id)
+      // console.log(res)
+      if (res.status === 200) setPost(post.filter((post) => post._id !== id))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  //4) Buscar por Id
+  const getPostById = async (id) => {
+    try {
+      const res = await getPostByIdReq(id)
+      // console.log(res)
+      // para que se vea en el PostFormPage
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  //5) Actualizar
+  const updatePost = async (id, post) => {
+    try {
+      const res = await updatePostReq(id, post)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
     return (
         < PostContext.Provider value={{
             post,
             createPost,
+            getAllPost,
+            getPostById,
+            updatePost,
+            deletePost,
         }}>
             {children}
         </PostContext.Provider>

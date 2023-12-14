@@ -1,14 +1,13 @@
 // Importamos de react-hook-form
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
 import { useAuth } from "../context/Auth.Context"
-import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import NavbarPublic from "../components/NavbarPublic"
 
-export const Login = () => {
+export const LoginPage = () => {
 
-    const {register, handleSubmit, formState:{errors}} = useForm()
+    const {register, handleSubmit, formState:{ errors },} = useForm()
 
     const { signin, isAuth, errors:loginErrors } = useAuth () // renombro el error
     
@@ -37,7 +36,7 @@ export const Login = () => {
             <form action="">
                 <h1 className="text-3xl text-center font-semibold mb-5">Login</h1>
                 {loginErrors.map((err, i) => (
-                    <div className="bg-red-800 text-white" key={i}>
+                    <div key={i} className="bg-red-800 text-white">
                         {err}
                     </div>
                 ))}

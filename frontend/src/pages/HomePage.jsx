@@ -1,10 +1,15 @@
 import NavbarPublic from "../components/NavbarPublic"
+import VideoBackground from "../components/VideoBackground"
+
 
 export const HomePage = () => {
     return (
     <>
         <NavbarPublic/>
-        <h1>Home Page</h1>
+        <VideoBackground />
+        <h1 className="text-5xl text-center py-2 font-bold">Visite Salta - Salta tan linda que enamora...</h1>
+
+        
     </>
     )
 }

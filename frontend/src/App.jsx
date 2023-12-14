@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { AuthProvider } from "./context/Auth.Context"
 import { HomePage } from "./pages/HomePage"
 import { Register } from "./pages/RegisterPage"
-import { Login } from "./pages/LoginPage"
+import { LoginPage } from "./pages/LoginPage"
 import { PostPage } from "./pages/PostPage"
 import { ProfilePage } from "./pages/ProfilePage"
 import { PrivateRoutes } from "./routes/PrivateRoutes"
@@ -19,7 +19,7 @@ export const App = () => {
         <Router>
           <Routes>
             <Route path="/" element = {<HomePage/>} />
-            <Route path="/login" element = {<Login/>} />
+            <Route path="/login" element = {<LoginPage/>} />
             <Route path="/register" element = {<Register/>} />
           <Route element={<PrivateRoutes/>}>
             <Route path="/post" element = {<PostPage />} />
