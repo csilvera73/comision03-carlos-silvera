@@ -7,7 +7,8 @@ import {
     register, 
     login, 
     logout, 
-    profile
+    profile,
+    verifyToken,
 } from "../controllers/auth.controller.js"
 
 import {authRequired} from "../middlewares/validateToken.js"
@@ -27,6 +28,9 @@ routes.post("/logout", logout)
 
 // Ruta para el perfil del usuario
 routes.get("/profile", authRequired, profile)
+
+// Ruta para verificar el Token desde el frontend
+routes.get("/verifyToken", verifyToken)
 
 //exporto por defecto
 export default routes

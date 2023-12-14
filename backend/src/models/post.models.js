@@ -11,7 +11,8 @@ import {Schema, model } from "mongoose"
         required: true,
     },
     // Referencia a usuario
-    user: { type: Schema.Types.ObjectId,
+    author: { 
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
      },

@@ -22,7 +22,10 @@ connectMongo()
 app.use(morgan("dev"))  //tiny, dev, combined, short, common, etc
 app.use(cookieParser())
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials: true
+}))
 
 /* app.use("/", (req, res) => {
     res.send("Bienvenidos")

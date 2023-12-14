@@ -5,7 +5,8 @@ import User from "../models/user.models.js"  // exportado x defecto, se importa 
 import bcrypt from "bcrypt"
 
 //libreria jsonwebtoken para Token
-//import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken"
+import {settingDotEnvSecret} from  "../config/dotenv.js"
 
 // importamos el cretate access token
 import {createAccessToken} from "../middlewares/jwt.validator.js"
@@ -16,6 +17,10 @@ import {createAccessToken} from "../middlewares/jwt.validator.js"
 // Registro de Usuario
 export const register = async (req, res) => {
     const {username, password, email, avatarurl} = req.body;
+
+     // Validar exsitencia del usuario
+     const userFound = await User.findOne({email})
+     if (userFound) return res.status(400).json(["El usuario ya existe"])
     
     try {
         // Hashing Password bcrypt
@@ -71,11 +76,11 @@ export const login = async (req, res) => {
     try {
         const userFound = await User.findOne({email})
         if (!userFound) 
-            return res.status(400).json({message: "Usuario no encontrado o registrado"})
+            return res.status(400).json(["Error en las Credenciales"])  // modificamos el mensaje de error en Array
 
         const match = await bcrypt.compare(password, userFound.password)
         if (!match) 
-            return res.status(400).json({message: "Contraseña incorrecta"})
+            return res.status(400).json(["Error en las Credenciales"]) // modificamos el mensaje de error en Array
 
         // Generacion del Token
         const token = await createAccessToken({ id: userFound._id });
@@ -87,7 +92,7 @@ export const login = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ message: "Error al loguearse", error });
+        res.status(500).json({ message: "Error al loguearse", error: error.messageSS });
     }
 
 }
@@ -114,3 +119,26 @@ export const logout = async (req, res) => {
       res.status(500).json({ message: "Error en el login", error });
     }
   };
+
+// Para verificar el token desde el frontend 
+
+const {secret} = settingDotEnvSecret() 
+export const verifyToken = async (req, res)=> {
+    const { token } = req.cookies;
+
+  if (!token) return res.status(401).json({ message: "No autorizado" })
+
+  jwt.verify(token, secret, async (err, user) => {
+    if (err) return res.status(401).json({ message: "No autorizado" })
+
+    const userFound = await User.findById(user.id)
+    if (!userFound) return res.status(401).json({ message: "No autorizado" })
+
+    return res.json({
+      id: userFound._id,
+      username: userFound.username,
+      email: userFound.email,
+    })
+  })
+
+}

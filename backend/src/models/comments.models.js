@@ -2,7 +2,8 @@ import {Schema, model } from "mongoose"
 
 const commentSchema = new Schema({
     // Referencia a Usuario
-    user: { type: Schema.Types.ObjectId, 
+    author: { 
+        type: Schema.Types.ObjectId, 
         ref: 'User',
         required: true,
      },
@@ -15,7 +16,12 @@ const commentSchema = new Schema({
         ref: 'Post',
         required: true,
       },
+    },
+    {
+        timestamps: true,
+        versionKey: false,
+    }
 
-  });
+  );
 
   export default model ("Comments", commentSchema)

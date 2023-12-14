@@ -30,7 +30,7 @@ export const createPost = async (req, res) => {
             title,
             description,
             user: req.user.id, // Usuario del Post
-            comments,
+            comments: req.user.id,
             imageURL
 
         })
