@@ -11,8 +11,6 @@ import {connectMongo} from "./database/db.js"
 // importamos las rutas
 import {routes}  from "./routes/auth.routes.js" //authRoutes
 import postRoutes from "./routes/post.routes.js"
-import commentRoutes from "./routes/comment.routes.js"
-
 
 //creamos el servidor y lo exportamos para usar en el index
 export const app = express()

@@ -18,4 +18,4 @@ const commentSchema = new Schema({
 
   });
 
-  export default model ("Comments", commentSchema)
+  export default model ("Comment", commentSchema)
