@@ -51,6 +51,17 @@ export const LoginPage = () => {
                     <Link to={"/register"} className="px-3 font-semibold rounded-md bg-green-500 text-white">Registrarse
                     </Link>
                 </p>
+                <div className="py-2">
+                  {
+                  loginErrors && loginErrors.errors && (
+                    loginErrors.errors.map((error, i)=>(
+                      <div className="bg-red-600 px-2" key={i}>
+                        {error.msg}
+                      </div>
+                    ))
+                  )
+                  }
+                </div>    
             </div>
         </div>
     </>

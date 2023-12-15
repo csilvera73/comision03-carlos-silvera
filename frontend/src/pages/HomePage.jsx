@@ -7,7 +7,8 @@ export const HomePage = () => {
     <>
         <NavbarPublic/>
         <VideoBackground />
-        <h1 className="text-5xl text-center py-2 font-bold">Visite Salta - Salta tan linda que enamora...</h1>
+        <h1 className="text-8xl text-center py-2 font-bold">Visite Salta</h1>
+        <h1 className="text-5xl text-center py-2 font-bold">Salta tan linda que enamora...</h1>
 
         
     </>

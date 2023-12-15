@@ -3,7 +3,7 @@ import { body, validationResult } from "express-validator"
 // Validación del Register
 
 export const validateRegister = [
- /*  body("username")
+  /* body("username")
     .notEmpty()
     .withMessage("Username no puede estar vacío")
     .isLength({ min: 6 })
