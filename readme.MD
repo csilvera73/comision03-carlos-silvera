@@ -92,3 +92,17 @@ c) Instalar React Boostrap
 
 
 ### Paso 5
+
+ejecutar el frontend
+
+```npm run dev```
+
+### Capturas del Sitio
+
+### Home
+
+![Inicio](https://i.postimg.cc/jdSQ7Rf0/Home.png)
+
+![Inicio Sesión](https://i.postimg.cc/4dMw5dhS/Login.png)
+
+![Logueado](https://i.postimg.cc/MTRfCKF4/Logueado.png)
